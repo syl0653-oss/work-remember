@@ -6,7 +6,11 @@ import {
   FileText,
   Folder,
   Lightbulb,
+  LogOut,
 } from 'lucide-react';
+import { isSupabaseConfigured } from '../../services/supabaseClient';
+import { useAuthStore } from '../../services/authStore';
+import { signOut } from '../../services/authService';
 import styles from './Sidebar.module.css';
 
 const ICON_PROPS = { size: 16, strokeWidth: 1.7 };
@@ -26,6 +30,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isOpen = false, onNavigate }: SidebarProps) {
+  const session = useAuthStore((s) => s.session);
+
   return (
     <aside className={isOpen ? styles.sidebarOpen : styles.sidebar}>
       <div className={styles.brand}>MY WORK</div>
@@ -45,7 +51,20 @@ export function Sidebar({ isOpen = false, onNavigate }: SidebarProps) {
       ))}
 
       <div className={styles.spacer} />
-      <div className={styles.caption}>V1 · 로컬 저장</div>
+
+      {isSupabaseConfigured && session ? (
+        <>
+          <div className={styles.accountEmail} title={session.user.email ?? ''}>
+            {session.user.email}
+          </div>
+          <button type="button" className={styles.navItem} onClick={() => signOut()}>
+            <LogOut {...ICON_PROPS} />
+            <span>로그아웃</span>
+          </button>
+        </>
+      ) : (
+        <div className={styles.caption}>V1 · 로컬 저장</div>
+      )}
     </aside>
   );
 }

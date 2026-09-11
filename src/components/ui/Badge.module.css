@@ -1,0 +1,8 @@
+.badge {
+  font-family: var(--font-family);
+  font-size: 10px;
+  letter-spacing: .06em;
+  border-radius: var(--radius-chip-sm);
+  padding: 1px 6px;
+  white-space: nowrap;
+}

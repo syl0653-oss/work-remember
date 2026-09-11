@@ -1,0 +1,74 @@
+.row {
+  border-top: 1px solid var(--border-soft);
+  padding: var(--space-5) 0;
+}
+
+.topLine {
+  display: flex;
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.projectChip {
+  font-size: 11px;
+  color: var(--green);
+  background: var(--green-tint);
+  border-radius: var(--radius-chip-sm);
+  padding: 1px 6px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.did {
+  font-size: 12px;
+  color: var(--text-body-sub);
+  margin-top: 3px;
+  white-space: pre-wrap;
+}
+
+.fullCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  margin-bottom: var(--space-5);
+}
+
+.fullTopLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.fullTitle {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tags {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-5) var(--space-9);
+}
+
+.fieldLabel {
+  font-size: 11px;
+  color: var(--mustard);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.fieldValue {
+  font-size: 13px;
+  color: var(--text-2);
+  white-space: pre-wrap;
+}

@@ -1,0 +1,53 @@
+.card {
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cardSelected {
+  composes: card;
+  border-color: var(--mustard);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.progressLabel {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.barTrack {
+  height: 5px;
+  background: var(--border-soft);
+  border-radius: var(--radius-chip-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+}
+
+.barFill {
+  height: 100%;
+  background: var(--green);
+  border-radius: var(--radius-chip-sm);
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-6);
+  font-size: 11px;
+  color: var(--text-sub);
+  flex-wrap: wrap;
+}

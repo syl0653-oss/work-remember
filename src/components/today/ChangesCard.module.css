@@ -1,0 +1,41 @@
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+}
+
+.item {
+  border-left: 2px solid var(--mustard);
+  padding: 0 0 0 9px;
+  margin-bottom: var(--space-5);
+}
+
+.source {
+  font-size: 11px;
+  color: var(--mustard);
+  font-weight: 600;
+}
+
+.content {
+  font-size: 13px;
+}
+
+.convertBtn {
+  border: 0;
+  background: transparent;
+  padding: 2px 0 0;
+  font-size: 11px;
+  color: var(--text-sub);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  border: 1px dashed var(--border-dash);
+  background: var(--bg);
+  border-radius: var(--radius-control);
+  padding: 6px 9px;
+  outline: 0;
+  font-size: 12px;
+}

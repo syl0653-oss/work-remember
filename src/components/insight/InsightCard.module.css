@@ -1,0 +1,19 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--mustard);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  padding: 14px 16px;
+  margin-bottom: var(--space-5);
+}
+
+.content {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.source {
+  font-size: 11px;
+  color: var(--text-faint);
+}

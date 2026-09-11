@@ -1,0 +1,68 @@
+.panel {
+  margin-top: var(--space-10);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 18px 20px;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: 18px;
+  margin: 0 0 var(--space-7);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-8);
+}
+
+.kicker {
+  font-family: var(--font-family);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--mustard);
+  margin-bottom: var(--space-3);
+}
+
+.taskRow {
+  display: flex;
+  gap: 7px;
+  font-size: 13px;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.taskMark {
+  color: var(--green);
+}
+
+.taskTitle {
+  flex: 1;
+}
+
+.taskStatus {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.logRow {
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.logTitle {
+  font-size: 13px;
+}
+
+.logDate {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.insightRow {
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border-soft);
+  font-size: 13px;
+}

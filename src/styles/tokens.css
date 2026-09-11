@@ -1,0 +1,73 @@
+:root {
+  /* Color */
+  --bg: #F9F8F3;
+  --surface: #FFFDF8;
+  --surface-alt: #F4F2EA;
+  --green: #1F4638;
+  --green-tint: #EBF0EC;
+  --green-nav: #E7EBE4;
+  --mustard: #C6A646;
+  --mustard-tint: #FBF4DF;
+  --mustard-badge-bg: #FAF2DC;
+  --mustard-badge-fg: #8A6D14;
+  --text: #292A26;
+  --text-2: #3D3E38;
+  --text-3: #4E4F47;
+  --text-sub: #77786F;
+  --text-muted: #8A8B7E;
+  --text-faint: #9A9B8F;
+  --text-disabled: #A8A99C;
+  --border: #E6E3D8;
+  --border-soft: #EFEDE3;
+  --border-dash: #DAD6C6;
+  --border-strong: #E0DDD0;
+  --red: #B4472F;
+  --red-border: #E8CDC5;
+
+  /*
+   * 표에 없지만 Work OS.dc.html 실제 마크업/로직에 쓰이는 값.
+   * 새로 만든 색이 아니라 레퍼런스 파일에서 그대로 추출.
+   */
+  --text-body-sub: #5F6058;   /* 사이드바 기본 항목, 업무 설명, 업무기록 본문, 뷰 토글 비선택 텍스트 */
+  --text-day-empty: #B3B4A7;  /* 캘린더 날짜 패널 '기록 없음' 문구 */
+  --text-hist-nodata: #BFC0B4; /* 히스토리 월 버튼 - 데이터 없는 달 */
+  --icon-delete: #C9CABE;     /* 월 고정 메모 삭제(×) 아이콘 */
+  --border-form: #DCD8C8;    /* 업무 기록 작성 폼 테두리 */
+  --surface-badge: #F1EFE6;  /* 예정 배지 배경 / 히스토리 월 버튼(데이터 있음) 배경 / 호버 틴트 */
+  --surface-today: #F6F8F4;  /* 캘린더 오늘 셀 배경 */
+  --surface-topbar: #F9F8F3E6; /* TopBar 반투명 배경(--bg + alpha) */
+  --white: #FFFFFF;
+
+  /* Spacing scale */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 18px;
+  --space-9: 22px;
+  --space-10: 26px;
+  --space-11: 28px;
+
+  /* Radius */
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --radius-control-sm: 5px;
+  --radius-chip: 4px;
+  --radius-chip-sm: 3px;
+  --radius-full: 50%;
+
+  /* Typography */
+  --font-family: 'Paperlogy', system-ui, sans-serif;
+  --font-size-base: 14px;
+  --line-height-base: 1.6;
+
+  /* Focus / selection / scrollbar */
+  --focus-color: #C6A646;
+  --selection-bg: #C6A64633;
+  --scrollbar-width: 10px;
+  --scrollbar-thumb: #E0DDD0;
+  --scrollbar-thumb-border: #F9F8F3;
+}

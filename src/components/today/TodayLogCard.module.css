@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.addBtn {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--radius-control-sm);
+  padding: 4px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}

@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: .02em;
+}
+
+.viewAll {
+  border: 0;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: 12px;
+  padding: 2px 4px;
+  text-decoration: none;
+}
+
+.quickAddRow {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.quickAddInput {
+  flex: 1;
+  border: 1px dashed var(--border-dash);
+  background: var(--bg);
+  border-radius: var(--radius-control);
+  padding: 7px 10px;
+  outline: 0;
+}
+
+.addBtn {
+  border: 0;
+  background: var(--mustard);
+  color: var(--white);
+  font-weight: 600;
+  border-radius: var(--radius-control);
+  padding: 7px 14px;
+  font-family: inherit;
+  cursor: pointer;
+}

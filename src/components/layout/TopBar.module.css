@@ -1,0 +1,69 @@
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface-topbar);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.menuBtn {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 4px;
+  color: var(--text);
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 899px) {
+  .menuBtn {
+    display: inline-flex;
+  }
+
+  .topBar {
+    padding: 10px 14px;
+  }
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex: 1;
+  max-width: 420px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-control);
+  padding: 6px 10px;
+}
+
+.searchBox svg {
+  flex: 0 0 auto;
+  color: var(--text-faint);
+}
+
+.searchInput {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  width: 100%;
+  padding: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.todayLabel {
+  font-size: 12px;
+  color: var(--text-sub);
+}

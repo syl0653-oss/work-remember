@@ -1,0 +1,38 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  align-items: stretch;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  /* 페이지 콘텐츠 영역 고정 패딩. 간격 스케일(2~28px)에 없는 구조적 레이아웃 치수라 리터럴로 지정 */
+  padding: 24px 28px 64px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 19;
+}
+
+@media (max-width: 899px) {
+  .content {
+    padding: 16px 16px 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  .content {
+    padding: 12px 12px 40px;
+  }
+}

@@ -1,0 +1,69 @@
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 82px;
+  padding: 7px 8px;
+  border: 0;
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  text-align: left;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cellToday {
+  composes: cell;
+  background: var(--surface-today);
+}
+
+.cellSelected {
+  composes: cell;
+  background: var(--mustard-tint);
+  box-shadow: inset 0 0 0 2px var(--mustard);
+}
+
+.outOfMonth {
+  opacity: .35;
+}
+
+.num {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+.numToday {
+  composes: num;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-nav);
+  border-radius: var(--radius-chip-sm);
+  padding: 1px 5px;
+}
+
+.leaveLabel {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dots {
+  display: flex;
+  gap: 3px;
+  margin-top: auto;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: block;
+}

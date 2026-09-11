@@ -1,0 +1,62 @@
+.form {
+  border: 1px solid var(--border-form);
+  background: var(--bg);
+  border-radius: 7px;
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.label {
+  font-size: 11px;
+  color: var(--text-sub);
+  display: block;
+}
+
+.field {
+  width: 100%;
+  margin-top: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control-sm);
+  padding: 6px 8px;
+  background: var(--surface);
+  outline: 0;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.textareaField {
+  composes: field;
+  height: 58px;
+  resize: vertical;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-4);
+}
+
+.saveBtn {
+  border: 0;
+  background: var(--green);
+  color: var(--white);
+  border-radius: var(--radius-control-sm);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: var(--radius-control-sm);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}

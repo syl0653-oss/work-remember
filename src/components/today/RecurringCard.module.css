@@ -1,0 +1,17 @@
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+}
+
+.group {
+  margin-bottom: var(--space-5);
+}
+
+.groupLabel {
+  font-family: var(--font-family);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--mustard);
+  margin-bottom: var(--space-2);
+}

@@ -1,0 +1,55 @@
+.page {
+  max-width: 1240px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: 22px;
+  margin: 0;
+}
+
+.segmented {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.segmentBtn {
+  border: 0;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 400;
+  background: var(--surface);
+  color: var(--text-body-sub);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.segmentBtnActive {
+  composes: segmentBtn;
+  font-weight: 600;
+  background: var(--green);
+  color: var(--white);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.quickAdd {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-control);
+  padding: 6px 10px;
+  outline: 0;
+  width: 240px;
+}

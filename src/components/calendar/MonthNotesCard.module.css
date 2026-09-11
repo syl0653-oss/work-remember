@@ -1,0 +1,79 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.monthLabel {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  border-bottom: 1px dotted var(--border-strong);
+  padding: var(--space-2) 0;
+}
+
+.mark {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--green);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.text {
+  flex: 1;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.textDone {
+  composes: text;
+  color: var(--text-disabled);
+  text-decoration: line-through;
+}
+
+.deleteBtn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--icon-delete);
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  border: 1px dashed var(--border-dash);
+  background: var(--bg);
+  border-radius: var(--radius-control);
+  padding: 6px 9px;
+  outline: 0;
+  font-size: 12px;
+}

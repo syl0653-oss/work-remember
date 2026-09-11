@@ -1,0 +1,17 @@
+.mark {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  line-height: 1.3;
+  color: var(--green);
+}
+
+@media (max-width: 639px) {
+  .mark {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

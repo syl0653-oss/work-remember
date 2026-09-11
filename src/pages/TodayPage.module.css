@@ -1,0 +1,84 @@
+.page {
+  max-width: 1180px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: 26px;
+  margin: 0;
+  letter-spacing: -.01em;
+}
+
+.subtitle {
+  color: var(--text-sub);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.progress {
+  flex: 1;
+  min-width: 220px;
+  max-width: 420px;
+  padding-bottom: 4px;
+}
+
+.progressLabelRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 5px;
+}
+
+.progressValue {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.progressTrack {
+  height: 6px;
+  background: var(--border);
+  border-radius: var(--radius-chip-sm);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--mustard);
+  border-radius: var(--radius-chip-sm);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.span2 {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+/*
+ * auto-fit(minmax(330px,1fr))가 컬럼 1개로 줄어드는 폭에서는
+ * span:2가 암시적 컬럼을 강제로 만들어 그리드가 뷰포트보다 넓어진다.
+ * 그 폭 이하에서는 명시적으로 1열 + span 해제.
+ */
+@media (max-width: 677px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .span2 {
+    grid-column: span 1;
+  }
+}

@@ -1,0 +1,36 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-7);
+}
+
+.column {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+.columnCount {
+  color: var(--text-faint);
+}
+
+@media (max-width: 639px) {
+  .board {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: var(--space-4);
+  }
+
+  .column {
+    flex: 0 0 260px;
+  }
+}

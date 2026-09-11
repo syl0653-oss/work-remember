@@ -1,0 +1,77 @@
+.dateLabel {
+  font-family: var(--font-family);
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.weekdayLabel {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: var(--space-7);
+}
+
+.kicker {
+  font-family: var(--font-family);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--mustard);
+  margin-bottom: var(--space-3);
+}
+
+.kickerSpaced {
+  composes: kicker;
+  margin-top: 16px;
+}
+
+.taskRow {
+  display: flex;
+  gap: var(--space-4);
+  padding: 5px 0;
+  border-top: 1px solid var(--border-soft);
+  font-size: 13px;
+}
+
+.taskMark {
+  color: var(--green);
+}
+
+.taskTitle {
+  flex: 1;
+}
+
+.taskProject {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.logRow {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.logTitle {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.logDid {
+  font-size: 12px;
+  color: var(--text-body-sub);
+  white-space: pre-wrap;
+}
+
+.changeRow {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-soft);
+  font-size: 12px;
+}
+
+.changeSource {
+  color: var(--red);
+}
+
+.emptyNote {
+  font-size: 12px;
+  color: var(--text-day-empty);
+  margin-top: var(--space-7);
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppStore } from '../services/storage';
+import { addProject } from '../services/projectService';
 import { ProjectCard, type ProjectCardStats } from '../components/project/ProjectCard';
 import { ProjectDetailPanel } from '../components/project/ProjectDetailPanel';
 import styles from './ProjectsPage.module.css';
@@ -7,6 +8,14 @@ import styles from './ProjectsPage.module.css';
 export function ProjectsPage() {
   const data = useAppStore((s) => s.data);
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
+  const [draftName, setDraftName] = useState('');
+
+  const submitNewProject = () => {
+    const value = draftName.trim();
+    if (!value) return;
+    addProject(value);
+    setDraftName('');
+  };
 
   const projectCards: ProjectCardStats[] = data.projects.map((p) => {
     const tasks = data.tasks.filter((t) => t.projectId === p.id);
@@ -29,7 +38,19 @@ export function ProjectsPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>프로젝트</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>프로젝트</h1>
+        <div className={styles.spacer} />
+        <input
+          className={styles.quickAdd}
+          value={draftName}
+          onChange={(e) => setDraftName(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') submitNewProject();
+          }}
+          placeholder="+ 새 프로젝트 (Enter)"
+        />
+      </div>
       <div className={styles.grid}>
         {projectCards.map((p) => (
           <ProjectCard

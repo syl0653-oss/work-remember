@@ -7,8 +7,8 @@ export function InsightsPage() {
   const data = useAppStore((s) => s.data);
 
   const resolveProjectName = (projectId: string | null) => {
-    if (!projectId) return '미지정';
-    return data.projects.find((p) => p.id === projectId)?.name ?? '미지정';
+    if (!projectId) return null;
+    return data.projects.find((p) => p.id === projectId)?.name ?? null;
   };
 
   return (
@@ -16,8 +16,9 @@ export function InsightsPage() {
       <h1 className={styles.title}>인사이트</h1>
       {data.insights.map((i) => {
         const workLog = data.workLogs.find((w) => w.id === i.sourceWorkLogId);
+        const projectName = workLog ? resolveProjectName(workLog.projectId) : null;
         const source = workLog
-          ? `${formatDotDate(workLog.date)} · ${resolveProjectName(workLog.projectId)} ${workLog.title}`
+          ? `${formatDotDate(workLog.date)} · ${projectName ? `${projectName} ` : ''}${workLog.title}`
           : '직접 작성';
         return <InsightCard key={i.id} content={i.content} source={source} />;
       })}

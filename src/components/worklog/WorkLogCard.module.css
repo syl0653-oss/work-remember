@@ -15,6 +15,11 @@
   background: var(--green-tint);
   border-radius: var(--radius-chip-sm);
   padding: 1px 6px;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .title {

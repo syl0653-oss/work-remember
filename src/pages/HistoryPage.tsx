@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAppStore } from '../services/storage';
 import { formatDotDate, weekdayLabel, todayISO } from '../utils/date';
+import { setWorkLogProject } from '../services/logService';
 import { WorkLogCard } from '../components/worklog/WorkLogCard';
 import { HistoryFilterBar, type MonthOption } from '../components/worklog/HistoryFilterBar';
 import type { WorkLog } from '../models/types';
@@ -75,6 +76,8 @@ export function HistoryPage() {
               log={log}
               projectName={resolveProjectName(log.projectId)}
               variant="full"
+              projects={data.projects}
+              onChangeProject={(projectId) => setWorkLogProject(log.id, projectId)}
             />
           ))}
         </div>

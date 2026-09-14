@@ -10,7 +10,7 @@ import {
 import { toggleRecurringToday } from '../services/recurringService';
 import { addChange } from '../services/changeService';
 import { addMemo } from '../services/memoService';
-import { saveWorkLog } from '../services/logService';
+import { saveWorkLog, setWorkLogProject } from '../services/logService';
 import { useUiStore } from '../services/uiStore';
 import { todayISO, formatLongKoreanDate } from '../utils/date';
 import type { Change, Memo } from '../models/types';
@@ -125,12 +125,14 @@ export function TodayPage() {
         <TodayLogCard
           className={styles.span2}
           logs={todayLogs}
+          projects={data.projects}
           resolveProjectName={resolveProjectName}
           draft={logDraft}
           onOpen={openBlankLog}
           onChange={updateLogDraftField}
           onSave={handleSaveLog}
           onCancel={closeLogDraft}
+          onChangeLogProject={setWorkLogProject}
         />
       </div>
     </div>

@@ -1,10 +1,12 @@
-import type { WorkLog } from '../../models/types';
+import type { Project, WorkLog } from '../../models/types';
 import styles from './WorkLogCard.module.css';
 
 interface WorkLogCardProps {
   log: WorkLog;
   projectName: string;
   variant?: 'compact' | 'full';
+  projects?: Project[];
+  onChangeProject?: (projectId: string | null) => void;
 }
 
 const FIELDS: { key: 'did' | 'result' | 'insight' | 'next'; label: string }[] = [
@@ -14,13 +16,54 @@ const FIELDS: { key: 'did' | 'result' | 'insight' | 'next'; label: string }[] = 
   { key: 'next', label: '다음 액션' },
 ];
 
-export function WorkLogCard({ log, projectName, variant = 'compact' }: WorkLogCardProps) {
+function ProjectChip({
+  projectName,
+  projects,
+  currentProjectId,
+  onChangeProject,
+}: {
+  projectName: string;
+  projects?: Project[];
+  currentProjectId: string | null;
+  onChangeProject?: (projectId: string | null) => void;
+}) {
+  if (!projects || !onChangeProject) {
+    return <span className={styles.projectChip}>{projectName}</span>;
+  }
+  return (
+    <select
+      className={styles.projectChip}
+      value={currentProjectId ?? ''}
+      onChange={(e) => onChangeProject(e.target.value || null)}
+    >
+      <option value="">미지정</option>
+      {projects.map((p) => (
+        <option key={p.id} value={p.id}>
+          {p.name}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+export function WorkLogCard({
+  log,
+  projectName,
+  variant = 'compact',
+  projects,
+  onChangeProject,
+}: WorkLogCardProps) {
   if (variant === 'full') {
     const tagsLabel = log.tags.length ? `#${log.tags.join(' #')}` : '';
     return (
       <div className={styles.fullCard}>
         <div className={styles.fullTopLine}>
-          <span className={styles.projectChip}>{projectName}</span>
+          <ProjectChip
+            projectName={projectName}
+            projects={projects}
+            currentProjectId={log.projectId}
+            onChangeProject={onChangeProject}
+          />
           <span className={styles.fullTitle}>{log.title}</span>
           <span className={styles.tags}>{tagsLabel}</span>
         </div>
@@ -39,7 +82,12 @@ export function WorkLogCard({ log, projectName, variant = 'compact' }: WorkLogCa
   return (
     <div className={styles.row}>
       <div className={styles.topLine}>
-        <span className={styles.projectChip}>{projectName}</span>
+        <ProjectChip
+          projectName={projectName}
+          projects={projects}
+          currentProjectId={log.projectId}
+          onChangeProject={onChangeProject}
+        />
         <span className={styles.title}>{log.title}</span>
       </div>
       <div className={styles.did}>{log.did}</div>

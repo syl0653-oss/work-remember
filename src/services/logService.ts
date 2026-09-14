@@ -39,3 +39,10 @@ export function saveWorkLog(draft: WorkLogDraft): void {
     }
   });
 }
+
+export function setWorkLogProject(workLogId: string, projectId: string | null): void {
+  useAppStore.getState().update((d) => {
+    const log = d.workLogs.find((w) => w.id === workLogId);
+    if (log) log.projectId = projectId;
+  });
+}

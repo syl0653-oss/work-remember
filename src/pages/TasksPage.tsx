@@ -8,6 +8,8 @@ import {
   addSubtask,
   completeTaskAndMaybeLog,
   deleteTask,
+  setTaskProject,
+  setTaskCategory,
 } from '../services/taskService';
 import { TaskList } from '../components/task/TaskList';
 import { TaskBoard } from '../components/task/TaskBoard';
@@ -73,12 +75,15 @@ export function TasksPage() {
       {view === 'list' ? (
         <TaskList
           tasks={data.tasks}
+          projects={data.projects}
           resolveProjectName={resolveProjectName}
           onCycle={cycleTaskStatus}
           onToggleSubtask={toggleSubtaskStatus}
           onAddSubtask={addSubtask}
           onComplete={handleComplete}
           onDelete={deleteTask}
+          onChangeProject={setTaskProject}
+          onChangeCategory={setTaskCategory}
         />
       ) : (
         <TaskBoard tasks={data.tasks} resolveProjectName={resolveProjectName} onCycle={cycleTaskStatus} />

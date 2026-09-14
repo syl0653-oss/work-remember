@@ -61,6 +61,20 @@ export function addSubtask(taskId: string, title: string): void {
   });
 }
 
+export function setTaskProject(taskId: string, projectId: string | null): void {
+  useAppStore.getState().update((d) => {
+    const t = d.tasks.find((x) => x.id === taskId);
+    if (t) t.projectId = projectId;
+  });
+}
+
+export function setTaskCategory(taskId: string, category: string): void {
+  useAppStore.getState().update((d) => {
+    const t = d.tasks.find((x) => x.id === taskId);
+    if (t) t.category = category;
+  });
+}
+
 export function deleteTask(taskId: string): void {
   useAppStore.getState().update((d) => {
     d.tasks = d.tasks.filter((t) => t.id !== taskId);

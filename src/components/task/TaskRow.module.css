@@ -74,6 +74,32 @@
   white-space: pre-wrap;
 }
 
+.editRow {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.editField {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--text-sub);
+}
+
+.editSelect,
+.editInput {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-control-sm);
+  padding: 4px 7px;
+  font-size: 12px;
+  font-family: inherit;
+  outline: 0;
+  min-width: 160px;
+}
+
 .subAddRow {
   display: flex;
   gap: var(--space-4);

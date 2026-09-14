@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Task } from '../../models/types';
+import type { Project, Task } from '../../models/types';
 import { Checkbox } from '../ui/Checkbox';
 import { Button } from '../ui/Button';
 import { TaskStatusBadge } from './TaskStatusBadge';
@@ -14,22 +14,28 @@ interface TaskRowProps {
   task: Task;
   projectName: string;
   variant?: 'list' | 'today';
+  projects?: Project[];
   onCycle: () => void;
   onToggleSubtask: (subtaskId: string) => void;
   onAddSubtask: (title: string) => void;
   onComplete: (wantsLog: boolean) => void;
   onDelete: () => void;
+  onChangeProject?: (projectId: string | null) => void;
+  onChangeCategory?: (category: string) => void;
 }
 
 export function TaskRow({
   task,
   projectName,
   variant = 'list',
+  projects,
   onCycle,
   onToggleSubtask,
   onAddSubtask,
   onComplete,
   onDelete,
+  onChangeProject,
+  onChangeCategory,
 }: TaskRowProps) {
   const [expanded, setExpanded] = useState(false);
   const [subDraft, setSubDraft] = useState('');
@@ -81,6 +87,33 @@ export function TaskRow({
 
           {expanded && (
             <div className={isToday ? styles.expandAreaToday : styles.expandArea}>
+              {!isToday && projects && onChangeProject && onChangeCategory && (
+                <div className={styles.editRow}>
+                  <label className={styles.editField}>
+                    프로젝트
+                    <select
+                      className={styles.editSelect}
+                      value={task.projectId ?? ''}
+                      onChange={(e) => onChangeProject(e.target.value || null)}
+                    >
+                      <option value="">미지정</option>
+                      {projects.map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className={styles.editField}>
+                    카테고리
+                    <input
+                      className={styles.editInput}
+                      value={task.category}
+                      onChange={(e) => onChangeCategory(e.target.value)}
+                    />
+                  </label>
+                </div>
+              )}
               {!isToday && (
                 <div className={styles.description}>{task.description || '설명 없음'}</div>
               )}

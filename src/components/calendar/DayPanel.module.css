@@ -75,3 +75,14 @@
   color: var(--text-day-empty);
   margin-top: var(--space-7);
 }
+
+.addChangeInput {
+  width: 100%;
+  margin-top: var(--space-4);
+  border: 1px dashed var(--border-dash);
+  background: var(--bg);
+  border-radius: var(--radius-control);
+  padding: 6px 9px;
+  outline: 0;
+  font-size: 12px;
+}

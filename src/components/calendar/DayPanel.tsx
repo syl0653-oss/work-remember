@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Change, Task, WorkLog } from '../../models/types';
 import { Card } from '../ui/Card';
 import { statusMark } from '../../utils/labels';
@@ -10,10 +11,19 @@ interface DayPanelProps {
   logs: WorkLog[];
   changes: Change[];
   resolveProjectName: (projectId: string | null) => string;
+  onAddChange: (content: string) => void;
 }
 
-export function DayPanel({ selected, tasks, logs, changes, resolveProjectName }: DayPanelProps) {
+export function DayPanel({ selected, tasks, logs, changes, resolveProjectName, onAddChange }: DayPanelProps) {
+  const [draft, setDraft] = useState('');
   const isEmpty = !tasks.length && !logs.length && !changes.length;
+
+  const submit = () => {
+    const value = draft.trim();
+    if (!value) return;
+    onAddChange(value);
+    setDraft('');
+  };
 
   return (
     <Card padding="16px">
@@ -43,6 +53,15 @@ export function DayPanel({ selected, tasks, logs, changes, resolveProjectName }:
           <span className={styles.changeSource}>{c.source}</span> · {c.content}
         </div>
       ))}
+      <input
+        className={styles.addChangeInput}
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') submit();
+        }}
+        placeholder="+ 이 날짜에 변동사항 기록 (Enter)"
+      />
 
       {isEmpty && <div className={styles.emptyNote}>이 날짜에 기록된 항목이 없습니다.</div>}
     </Card>

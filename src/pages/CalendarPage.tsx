@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAppStore } from '../services/storage';
 import { addMonthNote, toggleMonthNote, deleteMonthNote } from '../services/monthNoteService';
 import { addLeave, deleteLeave } from '../services/leaveService';
+import { addChange } from '../services/changeService';
 import { isWithinRange, rangesOverlap, todayISO } from '../utils/date';
 import {
   buildMonthDays,
@@ -95,6 +96,7 @@ export function CalendarPage() {
           logs={dayLogs}
           changes={dayChanges}
           resolveProjectName={resolveProjectName}
+          onAddChange={(content) => addChange(content, selected)}
         />
       </aside>
     </div>

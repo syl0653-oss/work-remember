@@ -1,6 +1,7 @@
 import { useAppStore } from './storage';
 import { uid } from '../utils/id';
 import { todayISO } from '../utils/date';
+import type { ISODate } from '../models/types';
 
 export interface WorkLogDraft {
   taskId: string | null;
@@ -12,13 +13,13 @@ export interface WorkLogDraft {
   next: string;
 }
 
-export function saveWorkLog(draft: WorkLogDraft): void {
+export function saveWorkLog(draft: WorkLogDraft, date: ISODate = todayISO()): void {
   useAppStore.getState().update((d) => {
     const project = d.projects.find((p) => p.name === draft.project);
     const id = uid();
     d.workLogs.unshift({
       id,
-      date: todayISO(),
+      date,
       projectId: project ? project.id : null,
       title: draft.title || '무제 기록',
       did: draft.did,

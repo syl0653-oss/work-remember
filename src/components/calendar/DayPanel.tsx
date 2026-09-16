@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { Change, Task, WorkLog } from '../../models/types';
+import type { WorkLogDraft } from '../../services/logService';
 import { Card } from '../ui/Card';
+import { WorkLogForm } from '../worklog/WorkLogForm';
 import { statusMark } from '../../utils/labels';
 import { formatDotDate, weekdayLabel } from '../../utils/date';
 import styles from './DayPanel.module.css';
@@ -12,9 +14,26 @@ interface DayPanelProps {
   changes: Change[];
   resolveProjectName: (projectId: string | null) => string;
   onAddChange: (content: string) => void;
+  logDraft: WorkLogDraft | null;
+  onOpenLogDraft: () => void;
+  onChangeLogDraft: (field: keyof Omit<WorkLogDraft, 'taskId'>, value: string) => void;
+  onSaveLogDraft: () => void;
+  onCancelLogDraft: () => void;
 }
 
-export function DayPanel({ selected, tasks, logs, changes, resolveProjectName, onAddChange }: DayPanelProps) {
+export function DayPanel({
+  selected,
+  tasks,
+  logs,
+  changes,
+  resolveProjectName,
+  onAddChange,
+  logDraft,
+  onOpenLogDraft,
+  onChangeLogDraft,
+  onSaveLogDraft,
+  onCancelLogDraft,
+}: DayPanelProps) {
   const [draft, setDraft] = useState('');
   const isEmpty = !tasks.length && !logs.length && !changes.length;
 
@@ -39,7 +58,20 @@ export function DayPanel({ selected, tasks, logs, changes, resolveProjectName, o
         </div>
       ))}
 
-      <div className={styles.kickerSpaced}>업무 기록</div>
+      <div className={styles.logHeader}>
+        <span className={styles.kickerSpaced}>업무 기록</span>
+        <button type="button" className={styles.addLogBtn} onClick={onOpenLogDraft}>
+          + 업무 기록 추가
+        </button>
+      </div>
+      {logDraft && (
+        <WorkLogForm
+          draft={logDraft}
+          onChange={onChangeLogDraft}
+          onSave={onSaveLogDraft}
+          onCancel={onCancelLogDraft}
+        />
+      )}
       {logs.map((l) => (
         <div key={l.id} className={styles.logRow}>
           <div className={styles.logTitle}>{l.title}</div>

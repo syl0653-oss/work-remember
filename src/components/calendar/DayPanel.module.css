@@ -23,6 +23,30 @@
   margin-top: 16px;
 }
 
+.logHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: var(--space-3);
+}
+
+.logHeader .kickerSpaced {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.addLogBtn {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--radius-control-sm);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--text-3);
+}
+
 .taskRow {
   display: flex;
   gap: var(--space-4);

@@ -3,6 +3,7 @@ import { useAppStore } from '../services/storage';
 import { addMonthNote, toggleMonthNote, deleteMonthNote } from '../services/monthNoteService';
 import { addLeave, deleteLeave } from '../services/leaveService';
 import { addChange } from '../services/changeService';
+import { saveWorkLog, type WorkLogDraft } from '../services/logService';
 import { isWithinRange, rangesOverlap, todayISO } from '../utils/date';
 import {
   buildMonthDays,
@@ -23,6 +24,7 @@ export function CalendarPage() {
   const today = todayISO();
   const [cursor, setCursor] = useState(() => firstOfMonth(today));
   const [selected, setSelected] = useState(today);
+  const [logDraft, setLogDraft] = useState<WorkLogDraft | null>(null);
 
   const resolveProjectName = (projectId: string | null) => {
     if (!projectId) return '미지정';
@@ -40,6 +42,33 @@ export function CalendarPage() {
   const monthStart = firstOfMonth(cursor);
   const monthEnd = lastOfMonth(cursor);
   const monthLeaves = data.leaves.filter((l) => rangesOverlap(l.start, l.end, monthStart, monthEnd));
+
+  const handleSelectDay = (iso: string) => {
+    setSelected(iso);
+    setLogDraft(null);
+  };
+
+  const openDayLogDraft = () => {
+    setLogDraft({
+      taskId: null,
+      title: '',
+      project: data.projects[0]?.name ?? '',
+      did: '',
+      result: '',
+      insight: '',
+      next: '',
+    });
+  };
+
+  const changeDayLogDraft = (field: keyof Omit<WorkLogDraft, 'taskId'>, value: string) => {
+    setLogDraft((d) => (d ? { ...d, [field]: value } : d));
+  };
+
+  const saveDayLogDraft = () => {
+    if (!logDraft) return;
+    saveWorkLog(logDraft, selected);
+    setLogDraft(null);
+  };
 
   return (
     <div className={styles.page}>
@@ -73,7 +102,7 @@ export function CalendarPage() {
           hasLog={(iso) => data.workLogs.some((w) => w.date === iso)}
           hasChange={(iso) => data.changes.some((c) => c.date === iso)}
           leavesForDay={(iso) => data.leaves.filter((l) => isWithinRange(iso, l.start, l.end)).map((l) => l.label)}
-          onSelect={setSelected}
+          onSelect={handleSelectDay}
         />
       </div>
 
@@ -97,6 +126,11 @@ export function CalendarPage() {
           changes={dayChanges}
           resolveProjectName={resolveProjectName}
           onAddChange={(content) => addChange(content, selected)}
+          logDraft={logDraft}
+          onOpenLogDraft={openDayLogDraft}
+          onChangeLogDraft={changeDayLogDraft}
+          onSaveLogDraft={saveDayLogDraft}
+          onCancelLogDraft={() => setLogDraft(null)}
         />
       </aside>
     </div>

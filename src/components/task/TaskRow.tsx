@@ -79,7 +79,22 @@ export function TaskRow({
             )}
           </div>
           <div className={styles.meta}>
-            <span>{projectName}</span>
+            {projects && onChangeProject ? (
+              <select
+                className={styles.metaProjectSelect}
+                value={task.projectId ?? ''}
+                onChange={(e) => onChangeProject(e.target.value || null)}
+              >
+                <option value="">미지정</option>
+                {projects.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span>{projectName}</span>
+            )}
             {!isToday && <span>{task.category}</span>}
             <span>마감 {formatDotDate(task.due)}</span>
             <span>{progressLabel}</span>
@@ -87,23 +102,8 @@ export function TaskRow({
 
           {expanded && (
             <div className={isToday ? styles.expandAreaToday : styles.expandArea}>
-              {!isToday && projects && onChangeProject && onChangeCategory && (
+              {!isToday && onChangeCategory && (
                 <div className={styles.editRow}>
-                  <label className={styles.editField}>
-                    프로젝트
-                    <select
-                      className={styles.editSelect}
-                      value={task.projectId ?? ''}
-                      onChange={(e) => onChangeProject(e.target.value || null)}
-                    >
-                      <option value="">미지정</option>
-                      {projects.map((p) => (
-                        <option key={p.id} value={p.id}>
-                          {p.name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
                   <label className={styles.editField}>
                     카테고리
                     <input

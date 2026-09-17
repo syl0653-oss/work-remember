@@ -1,29 +1,33 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Task } from '../../models/types';
+import type { Project, Task } from '../../models/types';
 import { Card } from '../ui/Card';
 import { TaskRow } from '../task/TaskRow';
 import styles from './TodayTaskCard.module.css';
 
 interface TodayTaskCardProps {
   tasks: Task[];
+  projects: Project[];
   resolveProjectName: (projectId: string | null) => string;
   onQuickAdd: (title: string) => void;
   onCycle: (taskId: string) => void;
   onToggleSubtask: (taskId: string, subtaskId: string) => void;
   onComplete: (taskId: string, wantsLog: boolean) => void;
   onDelete: (taskId: string) => void;
+  onChangeProject: (taskId: string, projectId: string | null) => void;
   className?: string;
 }
 
 export function TodayTaskCard({
   tasks,
+  projects,
   resolveProjectName,
   onQuickAdd,
   onCycle,
   onToggleSubtask,
   onComplete,
   onDelete,
+  onChangeProject,
   className,
 }: TodayTaskCardProps) {
   const [draft, setDraft] = useState('');
@@ -63,11 +67,13 @@ export function TodayTaskCard({
           task={task}
           projectName={resolveProjectName(task.projectId)}
           variant="today"
+          projects={projects}
           onCycle={() => onCycle(task.id)}
           onToggleSubtask={(subtaskId) => onToggleSubtask(task.id, subtaskId)}
           onAddSubtask={() => {}}
           onComplete={(wantsLog) => onComplete(task.id, wantsLog)}
           onDelete={() => onDelete(task.id)}
+          onChangeProject={(projectId) => onChangeProject(task.id, projectId)}
         />
       ))}
     </Card>

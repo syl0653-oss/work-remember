@@ -6,6 +6,7 @@ import {
   toggleSubtaskStatus,
   completeTaskAndMaybeLog,
   deleteTask,
+  setTaskProject,
 } from '../services/taskService';
 import { toggleRecurringToday } from '../services/recurringService';
 import { addChange } from '../services/changeService';
@@ -95,12 +96,14 @@ export function TodayPage() {
         <TodayTaskCard
           className={styles.span2}
           tasks={todayTasks}
+          projects={data.projects}
           resolveProjectName={resolveProjectName}
           onQuickAdd={addTask}
           onCycle={cycleTaskStatus}
           onToggleSubtask={toggleSubtaskStatus}
           onComplete={handleComplete}
           onDelete={deleteTask}
+          onChangeProject={setTaskProject}
         />
 
         <RecurringCard

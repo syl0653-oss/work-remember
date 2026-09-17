@@ -56,6 +56,20 @@
   flex-wrap: wrap;
 }
 
+.metaProjectSelect {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: -1px 0;
+  font-size: 11px;
+  font-family: inherit;
+  color: var(--text-muted);
+  outline: 0;
+  cursor: pointer;
+  max-width: 120px;
+}
+
+
 .expandArea {
   margin-top: var(--space-4);
   display: flex;
